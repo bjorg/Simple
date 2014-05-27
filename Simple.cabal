@@ -16,10 +16,18 @@ build-type:          Simple
 extra-source-files:  README.md
 cabal-version:       >=1.10
 
+Source-Repository head
+  type: git
+  location: https://github.com/bjorg/Simple.git
+
 library
-  exposed-modules:     Simple.Text
-  -- other-modules:       
+  exposed-modules:
+       Simple.Text
+
+  ghc-options: -fwarn-missing-signatures -Wall
+
   other-extensions:    FlexibleInstances, TypeSynonymInstances
+
   build-depends:       base >=4.6 && <4.7, text >=0.11 && <0.12
-  -- hs-source-dirs:      
+
   default-language:    Haskell2010

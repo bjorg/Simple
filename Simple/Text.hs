@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE TypeSynonymInstances #-}
 
-module Simple.String (
+module Simple.Text (
     Text,
     ToText,
     ToString,
@@ -177,5 +177,5 @@ lastIndexOfIgnoreCaseText text value = (T.toCaseFold text) `lastIndexOfText` (T.
 -- Helpers
 
 reverseIndex :: Text -> Int -> Maybe Int -> Maybe Int
-reverseIndex text matchLength Nothing = Nothing
+reverseIndex _ _ Nothing = Nothing
 reverseIndex text matchLength (Just value) = Just $ T.length text - value - matchLength
