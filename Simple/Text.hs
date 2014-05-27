@@ -1,35 +1,6 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE TypeSynonymInstances #-}
 
-{- String Methods from .Net
-
-GetHashCode
-Insert
-Join -> intercalate
-PadLeft
-PadRight
-Remove
-Split
-Substring
-
-Additions:
-+ getHashCodeIgnoreCase
-+ escape
-+ lastIndexOfIgnoreCase
-+ quote
-+ repeatPattern
-+ replaceAll
-+ replaceWithinDelimiters
-+ unescape
-
-Not Implemented from .Net:
-* Format
-* IsNormalized
-* Normalize
-* CompareOrdinal
-
--}
-
 module Simple.String (
     Text,
     ToText,
