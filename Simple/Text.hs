@@ -4,7 +4,9 @@
 module Simple.Text (
     Text,
     ToText,
+    toText,
     ToString,
+    toString,
     appendChar,
     appendText,
     isEmptyOrWhitespaceText,
