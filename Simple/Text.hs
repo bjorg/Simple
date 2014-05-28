@@ -5,8 +5,6 @@ module Simple.Text (
     Text,
     ToText,
     toText,
-    ToString,
-    toString,
     appendChar,
     appendText,
     isEmptyOrWhitespaceText,
@@ -57,13 +55,6 @@ instance ToText Char where
 
 instance ToText String where
     toText = T.pack
-
-{- This type class should really be in Data.String! -}
-class ToString a where
-    toString :: a -> String
-
-instance ToString Text where
-    toString = T.unpack
 
 -- Basic interface
 

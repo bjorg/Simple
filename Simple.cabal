@@ -22,12 +22,16 @@ Source-Repository head
 
 library
   exposed-modules:
-       Simple.Text
+      Simple.String
+      Simple.Text
 
   ghc-options: -fwarn-missing-signatures -Wall
 
   other-extensions:    FlexibleInstances, TypeSynonymInstances
 
-  build-depends:       base >=4.6 && <4.7, text >=0.11 && <0.12
+  build-depends:
+      base >=4.6 && <4.7, 
+      text >=0.11 && <0.12,
+      bytestring >=0.10 && <0.11
 
   default-language:    Haskell2010
