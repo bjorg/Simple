@@ -41,11 +41,11 @@ module Simple.Text (
     lastIndexOfText,
     lastIndexOfIgnoreCaseText
 ) where
+
+import Data.Text (Text)
     
 import qualified Data.Char as C
 import qualified Data.Text as T
-
-type Text = T.Text
 
 -- Conversions
 class ToText a where
