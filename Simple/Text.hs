@@ -12,6 +12,7 @@ module Simple.Text (
     lengthText,
     prependChar,
     replaceText,
+    splitText,
     toLowerText,
     toUpperText,
     trimText,
@@ -81,6 +82,9 @@ prependChar text char = T.cons char text
 replaceText :: Text -> (Text, Text) -> Text
 replaceText text (find, replace) = T.replace find replace text
 
+splitText :: Text -> Text -> [Text]
+splitText = T.splitOn
+
 toLowerText :: Text -> Text
 toLowerText = T.toLower
 
@@ -97,6 +101,7 @@ trimEndText :: Text -> Text
 trimEndText = T.stripEnd
 
 -- Comparisons
+
 compareText :: Text -> Text -> Ordering
 compareText = compare
 
