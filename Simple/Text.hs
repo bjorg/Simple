@@ -1,3 +1,15 @@
+-----------------------------------------------------------------------------
+-- |
+-- Module      :  Simple.Text
+-- Copyright   :  See LICENSE file
+-- License     :  Apache 2.0
+--
+-- Maintainer  :  Steve G. Bjorg <steve.bjorg@gmail.com>
+-- Stability   :  experimental
+-- Portability :  portable (not tested)
+--
+-----------------------------------------------------------------------------
+
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE TypeSynonymInstances #-}
 
@@ -43,7 +55,7 @@ module Simple.Text (
 ) where
 
 import Data.Text (Text)
-    
+
 import qualified Data.Char as C
 import qualified Data.Text as T
 
@@ -83,7 +95,7 @@ replaceText :: Text -> (Text, Text) -> Text
 replaceText text (find, replace) = T.replace find replace text
 
 splitText :: Text -> Text -> [Text]
-splitText = T.splitOn
+splitText text value = T.splitOn value text
 
 toLowerText :: Text -> Text
 toLowerText = T.toLower
