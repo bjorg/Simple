@@ -71,28 +71,6 @@ ghci > "hello" `appendText` " world!"
 "hello world!"
 ```
 
-### isEmptyOrWhitespaceText :: Text -> Bool
-Check if the `Text` value corresponds to the empty `Text` value after trimming all whitespace from it.
-
-```haskell
-ghci > isEmptyOrWhitespaceText ""
-True
-ghci > isEmptyOrWhitespaceText " "
-True
-ghci > isEmptyOrWhitespaceText "hi"
-False
-```
-
-### isEmptyText :: Text -> Bool
-Check if the `Text` value corresponds to the empty `Text` value.
-
-```haskell
-ghci > isEmptyText ""
-True
-ghci > isEmptyText "hi"
-False
-```
-
 ### lengthText :: Text -> Int
 Get the length of a `Text` value.
 
@@ -109,7 +87,23 @@ ghci > "i!" prependChar 'h'
 "hi!"
 ```
 
+### prependText :: Text -> Text -> Text
+Append the second `Text` value to the beginning of the first value.
+
+```haskell
+ghci > "world!" `prependText` "hello "
+"hello world!"
+```
+
 ## Transformations
+
+### joinText :: Text -> [Text] -> Text
+Join all `Text` values into a single `Text` value using the first argument as separator between them.
+
+```haskell
+ghci > joinText " " ["hello","world"]
+"hello world"
+```
 
 ### replaceText :: Text -> (Text, Text) -> Text
 Replace all occurrences of a `Text` value with another. The first argument is the `Text` value in which to perform the substitutions. The second argument is a tuple with the `Text` value to search for and its replacement.
@@ -214,6 +208,28 @@ Compare if two `Text` values are identical in a case-insensitive manner.
 ```haskell
 ghci > "hi" `equalsText` "HI"
 True
+```
+
+### isEmptyOrWhitespaceText :: Text -> Bool
+Check if the `Text` value corresponds to the empty `Text` value after trimming all whitespace from it.
+
+```haskell
+ghci > isEmptyOrWhitespaceText ""
+True
+ghci > isEmptyOrWhitespaceText " "
+True
+ghci > isEmptyOrWhitespaceText "hi"
+False
+```
+
+### isEmptyText :: Text -> Bool
+Check if the `Text` value corresponds to the empty `Text` value.
+
+```haskell
+ghci > isEmptyText ""
+True
+ghci > isEmptyText "hi"
+False
 ```
 
 ### startsWithText :: Text -> Text -> Bool

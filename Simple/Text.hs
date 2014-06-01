@@ -77,19 +77,19 @@ appendChar = T.snoc
 appendText :: Text -> Text -> Text
 appendText = T.append
 
-isEmptyOrWhitespaceText :: Text -> Bool
-isEmptyOrWhitespaceText text = isEmptyText $ trimText text
-
-isEmptyText :: Text -> Bool
-isEmptyText = T.null
-
 lengthText :: Text -> Int
 lengthText = T.length
 
 prependChar :: Text -> Char -> Text
 prependChar text char = T.cons char text
 
+prependText :: Text -> Text -> Text
+prependText text value = T.append value text
+
 -- Transformations
+
+joinText :: Text -> [Text] -> Text
+joinText = T.intercalate
 
 replaceText :: Text -> (Text, Text) -> Text
 replaceText text (find, replace) = T.replace find replace text
@@ -131,6 +131,12 @@ equalsText = (==)
 
 equalsIgnoreCaseText :: Text -> Text -> Bool
 equalsIgnoreCaseText left right = T.toCaseFold left == T.toCaseFold right
+
+isEmptyOrWhitespaceText :: Text -> Bool
+isEmptyOrWhitespaceText text = isEmptyText $ trimText text
+
+isEmptyText :: Text -> Bool
+isEmptyText = T.null
 
 startsWithText :: Text -> Text -> Bool
 startsWithText text prefix = T.isPrefixOf prefix text
