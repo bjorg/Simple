@@ -27,6 +27,8 @@ module Simple.Text (
     -- Transformations
     headText,
     joinText,
+    removeChar,
+    removeText,
     replaceText,
     splitText,
     subText,
@@ -103,6 +105,12 @@ headText text count = T.take count text
 
 joinText :: Text -> [Text] -> Text
 joinText = T.intercalate
+
+removeChar :: Text -> Char -> Text
+removeChar text char = T.replace (T.singleton char) (T.pack "") text
+
+removeText :: Text -> Text -> Text
+removeText text value = T.replace value (T.pack "") text
 
 replaceText :: Text -> (Text, Text) -> Text
 replaceText text (find, replace) = T.replace find replace text

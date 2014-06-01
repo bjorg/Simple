@@ -113,6 +113,22 @@ ghci > joinText " " ["hello","world"]
 "hello world"
 ```
 
+### removeChar :: Text -> Char -> Text
+Remove all occurrences of a `Char` value from the `Text` value.
+
+```haskell
+ghci > "hello world" `removeChar` 'l'
+"heo word"
+```
+
+### removeText :: Text -> Text -> Text
+Remove all occurrences of the second `Text` value from the first one.
+
+```haskell
+ghci > "hello world" `removeText` "ll"
+"heo world"
+```
+
 ### replaceText :: Text -> (Text, Text) -> Text
 Replace all occurrences of a `Text` value with another. The first argument is the `Text` value in which to perform the substitutions. The second argument is a tuple with the `Text` value to search for and its replacement.
 
