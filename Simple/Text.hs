@@ -15,31 +15,41 @@
 
 module Simple.Text (
     Text,
+    -- Conversions
     ToText,
     toText,
+    -- Basic Interface
     appendChar,
     appendText,
-    isEmptyOrWhitespaceText,
-    isEmptyText,
     lengthText,
     prependChar,
+    prependText,
+    -- Transformations
+    headText,
+    joinText,
     replaceText,
     splitText,
+    subText,
+    tailText,
     toLowerText,
     toUpperText,
     trimText,
     trimStartText,
     trimEndText,
+    -- Comparisons
     compareText,
     compareIgnoreCaseText,
     containsText,
     containsIgnoreCaseText,
+    isEmptyOrWhitespaceText,
+    isEmptyText,
     equalsText,
     equalsIgnoreCaseText,
     startsWithText,
     startsWithIgnoreCaseText,
     endsWithText,
     endsWithIgnoreCaseText,
+    -- Searching
     indexOfAnyChar,
     indexOfAnyIgnoreCaseChar,
     indexOfChar,
@@ -88,6 +98,9 @@ prependText text value = T.append value text
 
 -- Transformations
 
+headText :: Text -> Int -> Text
+headText text count = T.take count text
+
 joinText :: Text -> [Text] -> Text
 joinText = T.intercalate
 
@@ -96,6 +109,12 @@ replaceText text (find, replace) = T.replace find replace text
 
 splitText :: Text -> Text -> [Text]
 splitText text value = T.splitOn value text
+
+subText :: Text -> (Int, Int) -> Text
+subText text (offset, count) = T.take count $ T.drop offset text
+
+tailText :: Text -> Int -> Text
+tailText text count = T.drop count text
 
 toLowerText :: Text -> Text
 toLowerText = T.toLower

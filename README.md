@@ -97,6 +97,14 @@ ghci > "world!" `prependText` "hello "
 
 ## Transformations
 
+### headText :: Text -> Int -> Text
+Only keep the first count characters of the `Text` value.
+
+```haskell
+ghci > "helloWorld" `headText` 5
+"hello"
+```
+
 ### joinText :: Text -> [Text] -> Text
 Join all `Text` values into a single `Text` value using the first argument as separator between them.
 
@@ -119,6 +127,25 @@ Split a `Text` value on each occurrence of the second argument.
 ```haskell
 ghci > "hello world" `splitText` " "
 ["hello", "world"]
+```
+
+### subText :: Text -> (Int, Int) -> Text
+
+```haskell
+ghci > "hello world" `subText` (2, 2)
+"ll"
+ghci > subText "hello world" (0, 100)
+"hello world"
+ghci > subText "hello world" (100, 0)
+""
+```
+
+### tailText :: Text -> Int -> Text
+Skip the first count characters in `Text` value and return the remaining tail.
+
+```haskell
+ghci > "hello world" `tailText` 6
+"world"
 ```
 
 ### toLowerText :: Text -> Text
@@ -312,11 +339,6 @@ Find the first occurrence of the second argument in the first `Text` value in a 
 ghci > "hello WORLD" `indexOfIgnoreCaseText` "O"
 Just 4
 ```
-
-
-
-
-
 
 ### lastIndexOfAnyChar :: Text -> [Char] -> Maybe Int
 Find the last occurrence of any of the `Char` values in the `Text` value.
