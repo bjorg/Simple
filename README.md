@@ -11,6 +11,18 @@ git clone https://github.com/bjorg/Simple.git
 cabal install Simple
 ```
 
+# Module: Simple.Maybe
+
+### (??) :: Maybe a -> a -> a
+Check if a Maybe value has an actual value or not. If it does, return the actual value, otherwise return the second argument as default value.
+
+```haskell
+ghci > (Just 1) ?? 2
+1
+ghci > Nothing ?? 2
+2
+```
+
 # Module: Simple.Text
 
 Collection of functions to operate on `Text` values. `Simple.Text` is built on `Data.Text` and fully compatible with it. It exposes most of the functions with new, more expressive names. In addition, it also provides new convenience functions for case-insensitive operations. Function names are explicit enough to avoid the module needing to be included in a qualified manner. Aside from making the entire module available at once, it also promotes better code readability.
