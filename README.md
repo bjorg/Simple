@@ -341,17 +341,6 @@ ghci > "hello world" `endsWithText` "WoRlD"
 True
 ```
 
-### sortText :: [Text] -> [Text]
-Sort a list of `Text` values.
-
-```haskell
-ghci > sortText ["hi","bye","World","Hello"]
-["Hello","World","bye","hi"]
-```
-
-### sortIgnoreCaseText :: [Text] -> [Text]
-Sort a list of `Text` values in a case-insensitive manner.
-
 ```haskell
 ghci > sortIgnoreCaseText ["hi","bye","World","Hello"]
 ["bye","Hello","hi","World"]

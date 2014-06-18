@@ -53,8 +53,6 @@ module Simple.Text (
     startsWithIgnoreCaseText,
     endsWithText,
     endsWithIgnoreCaseText,
-    sortText,
-    sortIgnoreCaseText,
     -- Searching
     indexOfAnyChar,
     indexOfAnyIgnoreCaseChar,
@@ -73,7 +71,6 @@ module Simple.Text (
 import Data.Text (Text)
 
 import qualified Data.Char as C
-import qualified Data.List as L
 import qualified Data.Text as T
 
 -- Conversions
@@ -187,12 +184,6 @@ endsWithText text suffix = T.isSuffixOf suffix text
 
 endsWithIgnoreCaseText :: Text -> Text -> Bool
 endsWithIgnoreCaseText text suffix = T.isSuffixOf (T.toCaseFold suffix) (T.toCaseFold text)
-
-sortText :: [Text] -> [Text]
-sortText = L.sortBy compareText
-
-sortIgnoreCaseText :: [Text] -> [Text]
-sortIgnoreCaseText = L.sortBy compareIgnoreCaseText
 
 -- Searching
 
