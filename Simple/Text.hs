@@ -45,12 +45,16 @@ module Simple.Text (
     containsIgnoreCaseText,
     isEmptyOrWhitespaceText,
     isEmptyText,
+    isNotEmptyOrWhitespaceText,
+    isNotEmptyText,
     equalsText,
     equalsIgnoreCaseText,
     startsWithText,
     startsWithIgnoreCaseText,
     endsWithText,
     endsWithIgnoreCaseText,
+    sortText,
+    sortIgnoreCaseText,
     -- Searching
     indexOfAnyChar,
     indexOfAnyIgnoreCaseChar,
@@ -69,6 +73,7 @@ module Simple.Text (
 import Data.Text (Text)
 
 import qualified Data.Char as C
+import qualified Data.List as L
 import qualified Data.Text as T
 
 -- Conversions
@@ -160,10 +165,16 @@ equalsIgnoreCaseText :: Text -> Text -> Bool
 equalsIgnoreCaseText left right = T.toCaseFold left == T.toCaseFold right
 
 isEmptyOrWhitespaceText :: Text -> Bool
-isEmptyOrWhitespaceText text = isEmptyText $ trimText text
+isEmptyOrWhitespaceText = T.null . trimText
 
 isEmptyText :: Text -> Bool
 isEmptyText = T.null
+
+isNotEmptyOrWhitespaceText :: Text -> Bool
+isNotEmptyOrWhitespaceText = not . T.null . trimText
+
+isNotEmptyText :: Text -> Bool
+isNotEmptyText = not . T.null
 
 startsWithText :: Text -> Text -> Bool
 startsWithText text prefix = T.isPrefixOf prefix text
@@ -176,6 +187,12 @@ endsWithText text suffix = T.isSuffixOf suffix text
 
 endsWithIgnoreCaseText :: Text -> Text -> Bool
 endsWithIgnoreCaseText text suffix = T.isSuffixOf (T.toCaseFold suffix) (T.toCaseFold text)
+
+sortText :: [Text] -> [Text]
+sortText = L.sortBy compareText
+
+sortIgnoreCaseText :: [Text] -> [Text]
+sortIgnoreCaseText = L.sortBy compareIgnoreCaseText
 
 -- Searching
 

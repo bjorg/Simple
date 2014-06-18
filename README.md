@@ -287,6 +287,28 @@ ghci > isEmptyText "hi"
 False
 ```
 
+### isNotEmptyOrWhitespaceText :: Text -> Bool
+Check if the `Text` value is not the empty `Text` value after trimming all whitespace from it.
+
+```haskell
+ghci > isNotEmptyOrWhitespaceText ""
+False
+ghci > isNotEmptyOrWhitespaceText " "
+False
+ghci > isNotEmptyOrWhitespaceText "hi"
+True
+```
+
+### isNotEmptyText :: Text -> Bool
+Check if the `Text` value is not to the empty `Text` value.
+
+```haskell
+ghci > isNotEmptyText ""
+False
+ghci > isNotEmptyText "hi"
+True
+```
+
 ### startsWithText :: Text -> Text -> Bool
 Check if the first `Text` value starts with the second one.
 
@@ -318,6 +340,23 @@ Check if the first `Text` value ends with the second one in a case-insensitive m
 ghci > "hello world" `endsWithText` "WoRlD"
 True
 ```
+
+### sortText :: [Text] -> [Text]
+Sort a list of `Text` values.
+
+```haskell
+ghci > sortText ["hi","bye","World","Hello"]
+["Hello","World","bye","hi"]
+```
+
+### sortIgnoreCaseText :: [Text] -> [Text]
+Sort a list of `Text` values in a case-insensitive manner.
+
+```haskell
+ghci > sortIgnoreCaseText ["hi","bye","World","Hello"]
+["bye","Hello","hi","World"]
+```
+
 ## Searching
 
 ### indexOfAnyChar :: Text -> [Char] -> Maybe Int
