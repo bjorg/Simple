@@ -3,8 +3,8 @@
 
 name:                Simple
 version:             0.1.0.0
--- synopsis:
-description:         A Haskell library to simplify common functionality that recovering imperative programmers might be missing.
+synopsis:            A Haskell library to simplify common functionality that recovering imperative programmers might be missing.
+--description:
 homepage:            https://github.com/bjorg/Simple
 license:             Apache-2.0
 license-file:        LICENSE

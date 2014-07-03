@@ -107,15 +107,23 @@ ghci > "world!" `prependText` "hello "
 "hello world!"
 ```
 
-## Transformations
-
-### headText :: Text -> Int -> Text
-Only keep the first count characters of the `Text` value.
+### showText :: Show a => a -> Text
+Render value as `Text` value.
 
 ```haskell
-ghci > "helloWorld" `headText` 5
-"hello"
+ghci > show 123
+"123"
 ```
+
+### (...) :: Text -> Text -> Text
+Append the second `Text` value to the first. This operator is shorthand for `appendText`.
+
+```haskell
+ghci > "hello" ... " world!"
+"hello world!"
+```
+
+## Transformations
 
 ### joinText :: Text -> [Text] -> Text
 Join all `Text` values into a single `Text` value using the first argument as separator between them.
@@ -157,22 +165,21 @@ ghci > "hello world" `splitText` " "
 ["hello", "world"]
 ```
 
-### subText :: Text -> (Int, Int) -> Text
+### subText :: Text -> (Int, Maybe Int) -> Text
+Extract a `Text` value from another one. The second argument is a tuple with the offset and optional length. A negative offset indicates that the extraction should begin from the end of the `Text` value. If the length value is omitted, all remaining characters are extracted.
 
 ```haskell
-ghci > "hello world" `subText` (2, 2)
+ghci > "hello world" `subText` (2, Just 2)
 "ll"
-ghci > subText "hello world" (0, 100)
+ghci > subText "hello world" (0, Just 100)
 "hello world"
-ghci > subText "hello world" (100, 0)
+ghci > subText "hello world" (100, Just 0)
 ""
-```
-
-### tailText :: Text -> Int -> Text
-Skip the first count characters in `Text` value and return the remaining tail.
-
-```haskell
-ghci > "hello world" `tailText` 6
+ghci > "hello world" `subText` (6, Nothing)
+"world"
+ghci > "hello world" `subText` (-5, Just 2)
+"wo"
+ghci > "hello world" `subText` (-5, Nothing)
 "world"
 ```
 

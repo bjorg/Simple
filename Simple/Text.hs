@@ -24,15 +24,15 @@ module Simple.Text (
     lengthText,
     prependChar,
     prependText,
+    showText,
+    (...),
     -- Transformations
-    headText,
     joinText,
     removeChar,
     removeText,
     replaceText,
     splitText,
     subText,
-    tailText,
     toLowerText,
     toUpperText,
     trimText,
@@ -100,10 +100,13 @@ prependChar text char = T.cons char text
 prependText :: Text -> Text -> Text
 prependText text value = T.append value text
 
--- Transformations
+showText :: Show a => a -> Text
+showText = toText . show
 
-headText :: Text -> Int -> Text
-headText text count = T.take count text
+(...) :: Text -> Text -> Text
+(...) = appendText
+
+-- Transformations
 
 joinText :: Text -> [Text] -> Text
 joinText = T.intercalate
@@ -120,11 +123,13 @@ replaceText text (find, replace) = T.replace find replace text
 splitText :: Text -> Text -> [Text]
 splitText text value = T.splitOn value text
 
-subText :: Text -> (Int, Int) -> Text
-subText text (offset, count) = T.take count $ T.drop offset text
-
-tailText :: Text -> Int -> Text
-tailText text count = T.drop count text
+subText :: Text -> (Int, Maybe Int) -> Text
+subText text (offset, Just count)
+     | offset >= 0 = T.take count $ T.drop offset text
+     | otherwise = T.take count $ T.drop (T.length text + offset) text
+subText text (offset, Nothing)
+     | offset >= 0 = T.drop offset text
+     | otherwise = T.drop (T.length text + offset) text
 
 toLowerText :: Text -> Text
 toLowerText = T.toLower
